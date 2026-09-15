@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, ToastController, IonFooter, IonItem, IonList, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +49,9 @@ export class HomePage {
   }
 
   // TODO Modificar el constructor para inyectar Router y ToastController con inject
-  constructor(private router: Router, private toastController: ToastController) {}
+  private toastController = inject(ToastController);
+
+  constructor() {}
 
   // TODO (Apartado 1 + 3 – Event Binding): Mostrar un ion-toast al pulsar el botón
   async mostrarToast(): Promise<void> {
